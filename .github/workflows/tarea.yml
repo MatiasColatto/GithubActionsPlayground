@@ -11,9 +11,9 @@ jobs:
 
     steps:
       - name: Mostrar hora actual
-        run: echo "La hora actual es $(date)"
+        run: echo "La hora actual es $(TZ='America/Argentina/Buenos_Aires' date +'%Y-%m-%d %H:%M:%S')"
 
-      - name: Generar enlace aleatorio de YouTube
+      - name: Elegir enlace aleatorio de YouTube
         id: generate_link
         run: |
           video_ids=("dQw4w9WgXcQ" "KpOtuoHL45Y" "r6O0xOqikzY")
@@ -26,8 +26,9 @@ jobs:
           video_id=${{ steps.generate_link.outputs.video_id }}
           echo "Enlace al video de YouTube: https://www.youtube.com/watch?v=$video_id"
 
-      - name: Instalar dependencias
-        run: npm install
+      - name: Mostrar contenido de "dummyarchive.py"
+        run: cat dummyarchive.py
 
-      - name: Compilar el proyecto
-        run: npm run build
+
+      - name: Simplemente un mensaje por consola
+        run: echo "Simplemente un mensaje por consola"
