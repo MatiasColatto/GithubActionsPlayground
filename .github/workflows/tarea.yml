@@ -26,6 +26,9 @@ jobs:
           video_id=${{ steps.generate_link.outputs.video_id }}
           echo "Enlace al video de YouTube: https://www.youtube.com/watch?v=$video_id"
 
+      - name: PWD
+        run: pwd
+
       - name: Mostrar contenido de "dummyarchive.py"
         run: cat dummyarchive
 
