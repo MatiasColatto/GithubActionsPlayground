@@ -26,12 +26,8 @@ jobs:
           video_id=${{ steps.generate_link.outputs.video_id }}
           echo "Enlace al video de YouTube: https://www.youtube.com/watch?v=$video_id"
 
-      - name: PWD
+      - name: Ver la ruta completa del directorio actual de trabajo  para un flujo de GitHub Actions
         run: pwd
-
-      - name: Mostrar contenido de "dummyarchive.py"
-        run: cat /home/runner/work/PracticasProfesionalizantes2/PracticasProfesionalizantes2/dummyarchive.py
-
 
       - name: Simplemente un mensaje por consola
         run: echo "Simplemente un mensaje por consola"
