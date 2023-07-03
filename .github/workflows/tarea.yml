@@ -1,0 +1,33 @@
+name: Tarea PP2
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Mostrar hora actual
+        run: echo "La hora actual es $(date)"
+
+      - name: Generar enlace aleatorio de YouTube
+        id: generate_link
+        run: |
+          video_ids=("dQw4w9WgXcQ" "KpOtuoHL45Y" "r6O0xOqikzY")
+          random_index=$(shuf -i 0-$(( ${#video_ids[@]} - 1 )) -n 1)
+          random_video_id=${video_ids[$random_index]}
+          echo "::set-output name=video_id::$random_video_id"
+
+      - name: Muestra el enlace aleatorio de YouTube
+        run: |
+          video_id=${{ steps.generate_link.outputs.video_id }}
+          echo "Enlace al video de YouTube: https://www.youtube.com/watch?v=$video_id"
+
+      - name: Instalar dependencias
+        run: npm install
+
+      - name: Compilar el proyecto
+        run: npm run build
