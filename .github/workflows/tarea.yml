@@ -27,7 +27,7 @@ jobs:
           echo "Enlace al video de YouTube: https://www.youtube.com/watch?v=$video_id"
 
       - name: Mostrar contenido de "dummyarchive.py"
-        run: cat dummyarchive.py
+        run: cat dummyarchive
 
 
       - name: Simplemente un mensaje por consola
