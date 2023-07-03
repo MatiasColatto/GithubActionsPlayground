@@ -30,7 +30,7 @@ jobs:
         run: pwd
 
       - name: Mostrar contenido de "dummyarchive.py"
-        run: cat dummyarchive
+        run: cat /home/runner/work/PracticasProfesionalizantes2/PracticasProfesionalizantes2/dummyarchive
 
 
       - name: Simplemente un mensaje por consola
