@@ -1,0 +1,33 @@
+name: Custom Workflow
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Show Current Time
+        run: echo "The current time is $(TZ='America/Argentina/Buenos_Aires' date +'%Y-%m-%d %H:%M:%S')"
+
+      - name: Choose a Random YouTube Link
+        id: generate_link
+        run: |
+          video_ids=("dQw4w9WgXcQ" "KpOtuoHL45Y" "r6O0xOqikzY")
+          random_index=$(shuf -i 0-$(( ${#video_ids[@]} - 1 )) -n 1)
+          random_video_id=${video_ids[$random_index]}
+          echo "::set-output name=video_id::$random_video_id"
+
+      - name: Display Random YouTube Link
+        run: |
+          video_id=${{ steps.generate_link.outputs.video_id }}
+          echo "Link to YouTube video: https://www.youtube.com/watch?v=$video_id"
+
+      - name: View Full Directory Path for a GitHub Actions Workflow
+        run: pwd
+
+      - name: Just a Console Message
+        run: echo "Just a console message"
